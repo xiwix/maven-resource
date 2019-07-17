@@ -38,6 +38,11 @@ snapshot_url=$(jq -r '.source.snapshot_url //empty' < $payload)
 artifact=$(jq -r '.source.artifact //empty' < $payload)
 username=$(jq -r '.source.username //empty' < $payload)
 password=$(jq -r '.source.password //empty' < $payload)
+
+classifiers=$(jq -r '.source.classifiers //empty' < $payload)
+files=$(jq -r '.source.files //empty' < $payload)
+types=$(jq -r '.source.types //empty' < $payload)
+
 disable_redeploy=$(jq -r '.source.disable_redeploy //empty' < $payload)
 skip_cert_check=$(jq -r '.source.skip_cert_check //empty' < $payload)
 repository_cert=$(jq -r '.source.repository_cert //empty' < $payload)
@@ -158,6 +163,11 @@ args="$args -Dpackaging=$packaging"
 [ -n "$classifier" ] && args="$args -Dclassifier=$classifier"
 [ -n "$username" ]   && args="$args -Drepository.username=$username";
 [ -n "$password" ]   && args="$args -Drepository.password=$password";
+
+[ -n "$classifiers" ]   && args="$args -Dclassifiers=$classifiers";
+[ -n "$files" ]   && args="$args -Dfiles=$files";
+[ -n "$types" ]   && args="$args -Dtypes=$types";
+
 
 $resource_dir/mvnw deploy:deploy-file $args
 
