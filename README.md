@@ -34,6 +34,11 @@ Deploys and retrieve artifacts from a Maven Repository Manager.
       -----END CERTIFICATE-----
     ```
 
+* `classifiers`: *Optional.* A comma separated list of classifiers for each of the extra side artifacts to deploy. (If specified require `types` and `additionalFiles` also be set.)
+
+* `types`: *Optional.* A comma separated list of types for each of the extra side artifacts to deploy. (If specified require `classifiers` and `additionalFiles` also be set.)
+
+
 
 ## Behavior
 
@@ -55,6 +60,8 @@ Deploy the artifact to the Maven Repository Manager.
 #### Parameters
 
 * `file`: *Required.* The path to the artifact to deploy.
+
+* `additionalFiles`: *Optional.* A comma separated list of files for each of the extra side artifacts to deploy. (If specified require `stubs` and `types` also be set in `source` section)
 
 * `pom_file`: *Recommended.* The path to the pom.xml to deploy with the artifact.
 

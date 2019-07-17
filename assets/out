@@ -40,7 +40,6 @@ username=$(jq -r '.source.username //empty' < $payload)
 password=$(jq -r '.source.password //empty' < $payload)
 
 classifiers=$(jq -r '.source.classifiers //empty' < $payload)
-files=$(jq -r '.source.files //empty' < $payload)
 types=$(jq -r '.source.types //empty' < $payload)
 
 disable_redeploy=$(jq -r '.source.disable_redeploy //empty' < $payload)
@@ -50,6 +49,8 @@ repository_cert=$(jq -r '.source.repository_cert //empty' < $payload)
 file=$(jq -r '.params.file //empty' < $payload)
 pom_file=$(jq -r '.params.pom_file //empty' < $payload)
 version_file=$(jq -r '.params.version_file //empty' < $payload)
+files=$(jq -r '.params.additionalFiles //empty' < $payload)
+
 
 sourceMavenOpts=$(jq -r '.source.maven_opts //empty' < $payload)
 sourceMavenConfig=$(jq -r '.source.maven_config //empty' < $payload)
